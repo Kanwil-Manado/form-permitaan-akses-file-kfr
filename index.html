@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Permintaan Akses File ALco</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="judul-container">
+            <img src="https://djpb.kemenkeu.go.id/portal/images/banners/logo_ditjen_perbendaharaan0.png" alt="Logo Djpb">
+            <div class="judul">
+                <h1>Formulir Permintaan Akses File GFS</h1>
+                <h5>Silahkan mengisi Formulir untuk dapat mengakses file </h5>
+            </div>
+        </div>
+
+        <div id="success-message" style="display: none;">
+            Formulir berhasil dikirim !
+        </div>
+
+        <div class="form-container">
+            <form name="form-kfr" class="form-alco">
+                <div class="input-name">
+                    <label>Nama Lengkap</label>
+                    <input name="nama" type="text" placeholder="Ketikan Nama Anda" required>
+                </div>
+
+                <div class="org-role-container">
+                    <div class="input-organisasi">
+                        <label>Organisasi/Instansi</label>
+                        <select name="organisasi" required> 
+                            <option value="" disabled selected>Pilih Organisasi/Instansi Anda</option>
+                            <option value="pemerintah-daerah">Pemerintah Daerah</option>
+                            <option value="pemerintah-pusat">Pemerintah Pusat</option>
+                            <option value="swasta">Non Pemerintah/Swasta</option>
+                            <option value="perguruan-tinggi">Perguruan Tinggi</option>
+                            <option value="sekolah">Sekolah</option>
+                            <option value="umum-lainnya">Umum/Lainnya</option> 
+                        </select>
+
+                        <div class="input-nama-org" id="input-lainnya-instansi">
+                            <label>Nama Organisasi/Instansi</label>
+                            <input name="namaOrganisasi" type="text" placeholder="Ketikan Organisasi/Instansi Anda">
+                        </div>
+                    </div>
+
+                    <div class="input-role-container">
+                        <label>Jabatan/Peran</label>
+                        <div class="input-role">
+                            <input type="radio" id="role-pejabat" name="jabatanPeran" value="Pejabat Strategis"> Pejabat Strategis
+                        </div>
+                        <div class="input-role">
+                            <input type="radio" id="role-akademisi" name="jabatanPeran" value="Akademisi"> Akademisi
+                        </div>
+                        <div class="input-role">
+                            <input type="radio" id="role-mahasiswa" name="jabatanPeran" value="Mahasiswa/Siswa"> Mahasiswa/Siswa
+                        </div>
+                        <div class="input-role">
+                            <input type="radio" id="role-lainnya" name="jabatanPeran" value="Lainnya"> Lainnya
+                        </div>
+                        <div id="jabatan-lainnya-container" class="hidden">
+                            <input type="text" id="jabatan-lainnya" name="jabatanPeranLainnya" placeholder="Ketikan Jabatan/Peran Anda">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-keperluan-role">
+                    <label>Keperluan</label>
+                    <div class="input-keperluan">
+                        <input type="radio" id="keperluan-karyatulis" name="keperluan" value="Skripsi/Tesis/Karya Tulis/Sejenisnya" required> Skripsi/Tesis/Karya Tulis/Sejenisnya
+                    </div>
+                    <div class="input-keperluan">
+                        <input type="radio" id="keperluan-bacaan" name="keperluan" value="Bacaan/Berita" required> Bacaan/Berita
+                    </div>
+                    <div class="input-keperluan">
+                        <input type="radio" id="keperluan-lainnya" name="keperluan" value="Lainnya" required> Lainnya
+                    </div>
+                    <div id="keperluan-lainnya-container" class="hidden">
+                        <input type="text" id="keperluan-lainnya-text" name="keperluanLainnya" placeholder="Ketikan Keperluan Anda">
+                    </div>
+                </div>
+
+                <div class="penerbitan-file">
+                    <div class="input-tahun-file">
+                        <label>Tahun Penerbitan File yang Diakses</label>
+                        <select name="tahunFile" id="year-dropdown" required>
+                            <option value="" disabled selected>Pilih Tahun</option>
+                        </select>
+                    </div>
+    
+                    <div class="input-periode-laporan">
+                        <label>Periode Laporan</label>
+                        <select name="periodeLaporan" id="periode-laporan" required>
+                            <option value="" disabled selected>Pilih Periode Laporan</option>
+                            <option value="Triwulan I">Triwulan I</option>
+                            <option value="Triwulan II">Triwulan II</option>
+                            <option value="Triwulan III">Triwulan III</option>
+                            <option value="Tahunan">Tahunan</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="submit-btn">
+                    <button type="submit">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="main.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw-wkuyHtUyjbal5VpCOtmalmU8zHOFuUXHu7DZJg0ALSVPE9dK2mKP0Mm8xaKKE45dxw/exec'  
+        const form = document.forms['form-kfr']
+        const successMessage = document.getElementById('success-message')
+
+        function toggleCustomInput(radioId, containerId) {
+            const radio = document.getElementById(radioId);
+            const container = document.getElementById(containerId);
+            
+            radio.addEventListener('change', function() {
+                if (this.checked && this.value === 'Lainnya') {
+                    container.classList.remove('hidden');
+                } else {
+                    container.classList.add('hidden');
+                }
+            });
+
+            const otherRadios = document.querySelectorAll(`input[name="${radio.name}"]:not(#${radioId})`);
+            otherRadios.forEach(otherRadio => {
+                otherRadio.addEventListener('change', function() {
+                    container.classList.add('hidden');
+                });
+            });
+        }
+
+        toggleCustomInput('role-lainnya', 'jabatan-lainnya-container');
+        toggleCustomInput('keperluan-lainnya', 'keperluan-lainnya-container');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+
+            const formData = new FormData(form);
+
+            if (document.getElementById('role-lainnya').checked) {
+                formData.set('jabatanPeran', formData.get('jabatanPeranLainnya'));
+            }
+
+            if (document.getElementById('keperluan-lainnya').checked) {
+                formData.set('keperluan', formData.get('keperluanLainnya'));
+            }
+
+
+            const periodeLaporan = document.getElementById('periode-laporan').value;
+            formData.set('periodeLaporan', periodeLaporan);
+
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: formData
+            })
+            .then(response => {
+                console.log('Success!', response)
+                successMessage.style.display = 'block'
+                setTimeout(() => {
+                    successMessage.style.display = 'none'
+                }, 3000)
+                form.reset()
+                document.getElementById('jabatan-lainnya-container').classList.add('hidden');
+                document.getElementById('keperluan-lainnya-container').classList.add('hidden');
+            })
+            .catch(error => {
+                console.error('Error!', error.message)
+            })
+        })
+
+        const yearDropdown = document.getElementById('year-dropdown');
+        const currentYear = new Date().getFullYear();
+        for (let year = currentYear; year >= 1900; year--) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            yearDropdown.appendChild(option);
+        }
+    </script>
+</body>
+</html>

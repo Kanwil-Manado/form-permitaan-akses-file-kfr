@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.container {
+    padding: 1rem;
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 32px   rgba(42, 21, 232, 0.7);
+}
+
+/* JUDUL */
+.judul-container {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #ddd;
+}
+.judul-container img {
+    width: 15%;
+    height: 15%;
+}
+
+.judul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;                                                              
+}
+
+.judul h1 {
+    color: #0d60ae;
+}
+
+.judul h5 {
+    font-weight: 300;
+}
+
+/* FORM */
+
+.form-container form {
+    padding: 2rem;
+
+}
+
+label {
+    color: #0d60ae;
+    font-weight: 600;
+}
+
+
+input:focus, select:focus, textarea:focus {
+    border-color: #0d60ae;
+    box-shadow: 0 0 5px rgba(13, 96, 174, 0.7); 
+    outline: none; 
+}
+
+
+form .input-name input {
+    position: relative;                                                             
+    width: 100%;
+    height: 3rem;
+    outline: none;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0 1rem;
+
+}
+
+
+.org-role-container {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.input-organisasi {
+    display: flex;
+    flex-direction: column; 
+    
+}
+
+.input-organisasi label {
+    margin-bottom: 0.5em; 
+}
+
+.input-organisasi select{
+    width: 75%; 
+    height: 2.5rem;
+    padding: 0.5rem;
+}
+
+.input-nama-org {
+    padding: 1.5rem 0;
+}
+.input-organisasi .input-nama-org input {
+    position: relative;                                                             
+    width: 75%;
+    height: 2.5rem;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0 0.5rem;
+
+}
+
+
+.input-role-container {
+    margin-bottom: 20px;
+}
+
+.input-role {
+    margin-bottom: 10px; 
+    display: flex;
+    align-items: center;
+}
+
+.input-role input[type="radio"] {
+    margin-right: 8px; 
+    cursor: pointer;
+}
+
+
+#jabatan-lainnya {
+    border: none;
+    border-bottom: 1px solid #0d60ae;
+    outline: none;
+    margin-left: 1.4rem;
+    width: 100%;
+}
+
+
+
+.input-keperluan-container {
+    display: flex;
+    flex-direction: column; 
+}
+
+.input-keperluan {
+    margin-bottom: .5rem;
+}
+
+.input-keperluan input[type="radio"] {
+    margin-right: 8px; 
+    cursor: pointer;
+}
+
+
+#keperluan-lainnya-text {
+    border: none;
+    border-bottom: 1px solid #0d60ae;
+    outline: none;
+    margin-left: 1.5rem;
+}
+
+.penerbitan-file {
+    display: flex;
+    gap: 7rem;
+}
+
+.input-tahun-file {
+    display: flex;
+    flex-direction: column; 
+    
+}
+
+.input-tahun-file label {
+    margin:  1rem 0.5em 0.5em 0 ; 
+}
+
+.input-tahun-file select{
+    width: 100%; 
+    height: 2.5rem;
+    padding: 0.5rem;
+}
+
+.input-periode-laporan{
+    display: flex;
+    flex-direction: column; 
+    
+}
+
+.input-periode-laporan label {
+    margin:  1rem 0.5em 0.5em 0 ; 
+}
+
+.input-periode-laporan select{
+    width: 160%; 
+    height: 2.5rem;
+    padding: 0.5rem;
+}
+
+.submit-btn {
+    padding: 2rem ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.submit-btn button {
+    width: 50%;
+    background-color: #0d60aef4; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 3rem; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.submit-btn button:hover {
+    background-color: white;
+    color: #0d60ae;
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba(13, 96, 174, 0.7); 
+}
+
+#success-message {
+    width: 100%;
+    background-color:rgba(0, 128, 0, 0.25);
+    padding: 1rem;
+    color: black;
+    border-bottom: 8px solid green;
+    border-radius: 4px;
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 300;
+    transition: ease-in-out 3s;
+
+}
+
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    body {
+        font-size: 80%;
+    }
+
+
+    .judul-container img {
+        width: 15%;
+    }
+
+
+
+    .input-role-container,
+    .input-keperluan-container {
+        margin-top: 0;
+    }
+
+    .input-role,
+    .input-keperluan {
+        margin-bottom: 0.5rem;
+    }
+
+    input::placeholder {
+    font-size: 75%;
+    }
+
+    form .input-name input {
+        padding: 1rem ;
+        height: 1rem;
+        width: 100%;
+    }
+
+    .org-role-container {
+        gap: 3rem;
+    }
+
+    #input-other-role input {
+        width: 70%;
+        padding: 1rem ;
+        height: 1rem;
+    }
+
+    #input-other-keperluan input {
+        padding: 1rem ;
+        height: 1rem;
+    }
+
+ 
+    .input-organisasi select option {
+        font-size: .7rem;
+        width: 75%; 
+        height: 1rem;
+        padding: 0.5rem;
+    }
+
+    .input-organisasi select {
+        font-size: .7rem ;
+    }
+
+    .input-tahun-file select{
+        width: 100%; 
+        height: 2rem;
+        padding: 0.5rem;
+        font-size: .7rem;
+    }
+
+    .input-periode-laporan select{
+        width: 100%;
+    }
+
+    
+}
+
+@media (max-width: 480px) {
+
+    body{
+        font-size: 75%;
+    }
+
+    .judul-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .judul-container img {
+        width: 20%;
+    }
+
+    .org-role-container {
+        flex-direction: column;
+    }
+
+    input::placeholder {
+        font-size: 70%;
+        }
+
+    #input-other-role input {
+        width: 100%;
+        padding: .7rem ;
+        height: 1rem;
+        }
+    
+        #input-other-keperluan input {
+            width: 80%;
+            padding: .7rem ;
+            height: 1rem;
+        }
+
+        form .input-name input {
+            padding: .7rem ;
+            height: 1rem;
+            width: 100%;
+        }
+    
+        .input-organisasi .input-nama-org input {
+            padding: .7rem ;
+            height: 1rem;
+            width: 100%;
+        }
+    
+        .input-organisasi select {
+            font-size: .7rem ;
+            width: 100%;
+            padding: .5rem;
+            height: 2rem;
+        }
+
+        .penerbitan-file {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .input-periode-laporan select {
+            width: 100%;
+        }
+
+
+
+
+
+
+
+}
